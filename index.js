@@ -80,12 +80,15 @@ function getName(name) {
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
 function makeSmartPerson(name) {
-  let obj = {
-    name:name ,
-    sum: (a, b) => a+b,
-    speak: (`Hello, my name is ${name.name}`)
-  }
-  return obj
+  return {
+    name: name,
+    sum: ((num1, num2) =>{
+      return num1 + num2;
+    }),
+    speak: () => {
+      return `Hi, my name is ${name}`
+    }
+  };
 }
 
 
@@ -293,8 +296,14 @@ const argTimesTwo = (num) => {return num * 2}
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(num) {
+  return {
+    odometer: num,
+    drive: function (distance) {
+      this.odometer = this.odometer + distance;
+      return this.odometer;
+    }
+  }
 }
 
 /// ////// END OF CHALLENGE /////////
